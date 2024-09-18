@@ -6,10 +6,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: Install toolchain
-        uses: numworks/setup-arm-toolchain@2020-q2
+        uses: numworks/setup-arm-toolchain@latest
       - name: Run make build
         run: make build
       - name: Run make check
         run: make check
+      - uses: actions/upload-artifact@master
+        with:
+          name: peanutgb.nwa
+          path: output/peanutgb.nwa
